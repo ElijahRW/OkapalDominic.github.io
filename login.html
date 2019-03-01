@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<title>NCRAR</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<body class="w3-content" style="max-width:1300px;background:url('imgs/background.png') no-repeat center center fixed;background-size: cover;">
+
+<div class="w3-row">
+			<a href="index.html"><img class="w3-left w3-padding w3-margin w3-half" src="imgs/logo.png"></a>
+			<a href="index.html" class="w3-half">Home</a>
+</div>
+
+<div class="w3-row">
+
+  <div class="w3-rest w3-container tabs" style="height:700px">
+    <div class="w3-padding-64 w3-center">
+        <form class="w3-container">
+            <label>Username</label>
+            <input id="username" class="w3-input" type="text">
+
+            <label>Password</label>
+            <input id="password" class="w3-input" type="password">
+
+            <button class="w3-btn w3-green" onclick="checkpassword()">Login</button>
+        </form>
+        <div id="wrong" class="w3-panel w3-red w3-hide">Wrong Username or Password</div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+<!-- Footer -->
+<footer class="w3-container w3-black w3-padding-16">
+  <p>Footer</p>
+</footer>
+
+<script>
+    function checkpassword() {
+        var username = document.getElementById("username").value,
+            password = document.getElementById("password").value;
+
+        if(username === "Candi" && password === "Candi") {
+            window.location.href = "admin.html";
+        }
+        else if(username === "Pat" && password === "Pat") {
+            window.location.href = "audiologist.html";
+        }
+        else {
+            document.getElementById("wrong").style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
