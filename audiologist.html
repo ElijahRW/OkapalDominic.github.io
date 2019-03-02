@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<title>Audiologist</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+<body class="w3-content"
+    style="max-width:1300px;background:url('imgs/background.png') no-repeat center center fixed;background-size: cover;"
+    onload="checkForData()">
+
+    <!--TOP-->
+    <div class="w3-row w3-padding w3-margin">
+        <div class="w3-container w3-cell">
+            <img class="w3-left w3-half" src="imgs/logo.png">
+        </div>
+        <div class="w3-container w3-cell">
+            <div class="w3-right w3-text-white w3-jumbo w3-cell-middle">AUDIOLOGIST</div>
+            <a href="index.html" class="w3-text-white w3-right">Logout</a>
+        </div>
+    </div>
+
+    <!--NAVIGATION TABS-->
+    <div class="w3-row">
+        <div class="w3-quarter w3-container w3-center">
+            <div class="w3-padding-64">
+                <a href="#work" id="summaryNav" class="w3-button w3-blue w3-block w3-hover-red w3-padding-16 navs"
+                    onclick="changeTab('summary', 'summaryNav')">Summary</a>
+                <a href="#work" id="testsNav" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16 navs"
+                    onclick="changeTab('tests', 'testsNav')">Tests</a>
+                <a href="#contact" id="patientNav"
+                    class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16 navs"
+                    onclick="changeTab('patient', 'patientNav')">Patient Search</a>
+            </div>
+        </div>
+
+        <!--SUMMARY TAB-->
+        <div id="summary" class="w3-rest w3-card-4 w3-margin w3-white tabs">
+            <header class="w3-container w3-center w3-blue">
+                <h1>Summary</h1>
+            </header>
+
+            <div class="w3-cell-row w3-left-align">
+
+                <div class="w3-container w3-cell w3-half">
+                    <h2>Tinnitus Screener</h2>
+                    <p id="tinnitusScreener"></p>
+
+                    <h2>Tinnitus and Hearing Survey</h2>
+                    <p id="THSA"></p>
+                    <p id="THSB"></p>
+                    <p id="indicates"></p>
+                    <p id="THSC"></p>
+                </div>
+
+                <div class="w3-container w3-cell w3-half">
+                    <h2>Tinnitus Functional Index</h2>
+                    <p id="Overall"></p>
+                    <p id="I"></p>
+                    <p id="Sc"></p>
+                    <p id="C"></p>
+                    <p id="Sl"></p>
+                    <p id="A"></p>
+                    <p id="R"></p>
+                    <p id="Q"></p>
+                    <p id="E"></p>
+                </div>
+            </div>
+
+            <header class="w3-container w3-center w3-cyan">
+                <h2>Test Results</h2>
+            </header>
+
+            <div class="w3-cell-row w3-left-align">
+                <div class="w3-container w3-cell">
+                    <h3>Audiogram</h3>
+                    <p>Type: <span id="audType"></span></p>
+                </div>
+            </div>
+
+            <div class="w3-cell-row w3-left-align">
+                <div class="w3-container w3-cell w3-half">
+                    <h4>Left Ear - High Frequency</h4>
+                    <p>Severity: <span id="lehfs"></span></p>
+                    <p>Configuration: <span id="lehfc"></span></p>
+                    <h4>Left Ear - Low Frequency</h4>
+                    <p>Severity: <span id="lelfs"></span></p>
+                    <p>Configuration: <span id="lelfc"></span></p>
+                </div>
+                <div class="w3-container w3-cell w3-half">
+                    <h4>Right Ear - High Frequency</h4>
+                    <p>Severity: <span id="rehfs"></span></p>
+                    <p>Configuration: <span id="rehfc"></span></p>
+                    <h4>Right Ear - Low Frequency</h4>
+                    <p>Severity: <span id="relfs"></span></p>
+                    <p>Configuration: <span id="relfc"></span></p>
+                </div>
+            </div>
+
+            <div class="w3-cell-row w3-left-align">
+                <div class="w3-container w3-cell w3-half">
+                    <h3>Otoscopy</h3>
+                    <p>Type: <span id="otoType"></span></p>
+                </div>
+                <div class="w3-container w3-cell w3-half">
+                    <h3>Tympanometry</h3>
+                    <p>Type: <span id="tympType"></span></p>
+                </div>
+            </div>
+
+        </div>
+
+        <!--TESTS TAB-->
+        <div id="tests" class="w3-rest tabs" style="display:none">
+
+            <div class="w3-card-4 w3-section w3-white">
+                <header class="w3-container w3-gray">
+                    <h1>AUDIOGRAM</h1>
+                </header>
+
+                <div class="w3-container">
+                    <select class="w3-bar-item w3-select" name="audType">
+                        <option value="" disabled selected>Select A Type</option>
+                        <option value="conductive">Conductive</option>
+                        <option value="sensorineural">Sensorineural</option>
+                        <option value="mixed">Mixed</option>
+                    </select>
+                </div>
+                <div class="w3-container">
+                    <h2>LEFT EAR</h2>
+                    <div class="w3-row">
+                        <div class="w3-card-4 w3-metro-light-blue w3-left" style="width:49.5%">
+                            <header class="w3-container w3-blue">
+                                <h3>High Frequency</h3>
+                            </header>
+                            <select class="w3-select" name="lehfs">
+                                <option value="" disabled selected>Severity</option>
+                                <option value="normal">Normal</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="moderateSevere">Moderate/Severe</option>
+                                <option value="severe">Severe</option>
+                                <option value="profound">Profound</option>
+                            </select>
+                            <div class="w3-container w3-padding">
+                                <h4>CONFIGURATION</h4>
+                                <div style="display:flex;flex-wrap:wrap;">
+                                    <div style="width:10em">
+                                        <input id="symmetricLH" class="w3-check" type="checkbox">
+                                        <label>Symmetric</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="asymmetricLH" class="w3-check" type="checkbox">
+                                        <label>Asymmetric</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="progressiveLH" class="w3-check" type="checkbox">
+                                        <label>Progressive</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="suddenLH" class="w3-check" type="checkbox">
+                                        <label>Sudden</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="flatLH" class="w3-check" type="checkbox">
+                                        <label>Flat</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="risingLH" class="w3-check" type="checkbox">
+                                        <label>Rising</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="cookieLH" class="w3-check" type="checkbox">
+                                        <label>Cookie Bite</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="precipitousLH" class="w3-check" type="checkbox">
+                                        <label>Precipitous</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="noiseLH" class="w3-check" type="checkbox">
+                                        <label>Noise-Notch</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="CornerLH" class="w3-check" type="checkbox">
+                                        <label>Corner</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-card-4 w3-metro-light-blue w3-right" style="width:49.5%">
+                            <header class="w3-container w3-blue">
+                                <h3>Low Frequency</h3>
+                            </header>
+                            <select class="w3-select" name="lelfs">
+                                <option value="" disabled selected>Severity</option>
+                                <option value="normal">Normal</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="moderateSevere">Moderate/Severe</option>
+                                <option value="severe">Severe</option>
+                                <option value="profound">Profound</option>
+                            </select>
+                            <div class="w3-container w3-padding">
+                                <h4>CONFIGURATION</h4>
+                                <div style="display:flex;flex-wrap:wrap;">
+                                    <div style="width:10em">
+                                        <input id="symmetricLL" class="w3-check" type="checkbox">
+                                        <label>Symmetric</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="asymmetricLL" class="w3-check" type="checkbox">
+                                        <label>Asymmetric</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="progressiveLL" class="w3-check" type="checkbox">
+                                        <label>Progressive</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="suddenLL" class="w3-check" type="checkbox">
+                                        <label>Sudden</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="flatLL" class="w3-check" type="checkbox">
+                                        <label>Flat</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="risingLL" class="w3-check" type="checkbox">
+                                        <label>Rising</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="cookieLL" class="w3-check" type="checkbox">
+                                        <label>Cookie Bite</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="precipitousLL" class="w3-check" type="checkbox">
+                                        <label>Precipitous</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="noiseLL" class="w3-check" type="checkbox">
+                                        <label>Noise-Notch</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="CornerLL" class="w3-check" type="checkbox">
+                                        <label>Corner</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-container">
+                    <h2>RIGHT EAR</h2>
+                    <div class="w3-row">
+                        <div class="w3-card-4 w3-metro-light-red w3-left w3-marigin-bottom" style="width:49.5%">
+                            <header class="w3-container w3-red">
+                                <h3>High Frequency</h3>
+                            </header>
+                            <select class="w3-select" name="rehfs">
+                                <option value="" disabled selected>Severity</option>
+                                <option value="normal">Normal</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="moderateSevere">Moderate/Severe</option>
+                                <option value="severe">Severe</option>
+                                <option value="profound">Profound</option>
+                            </select>
+                            <div class="w3-container w3-padding">
+                                <h4>CONFIGURATION</h4>
+                                <div style="display:flex;flex-wrap:wrap;">
+                                    <div style="width:10em">
+                                        <input id="symmetricRH" class="w3-check" type="checkbox">
+                                        <label>Symmetric</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="asymmetricRH" class="w3-check" type="checkbox">
+                                        <label>Asymmetric</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="progressiveRH" class="w3-check" type="checkbox">
+                                        <label>Progressive</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="suddenRH" class="w3-check" type="checkbox">
+                                        <label>Sudden</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="flatRH" class="w3-check" type="checkbox">
+                                        <label>Flat</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="risingRH" class="w3-check" type="checkbox">
+                                        <label>Rising</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="cookieRH" class="w3-check" type="checkbox">
+                                        <label>Cookie Bite</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="precipitousRH" class="w3-check" type="checkbox">
+                                        <label>Precipitous</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="noiseRH" class="w3-check" type="checkbox">
+                                        <label>Noise-Notch</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="CornerRH" class="w3-check" type="checkbox">
+                                        <label>Corner</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w3-card-4 w3-metro-light-red w3-right w3-margin-bottom" style="width:49.5%">
+                            <header class="w3-container w3-red">
+                                <h3>Low Frequency</h3>
+                            </header>
+                            <select class="w3-select" name="relfs">
+                                <option value="" disabled selected>Severity</option>
+                                <option value="normal">Normal</option>
+                                <option value="moderate">Moderate</option>
+                                <option value="moderateSevere">Moderate/Severe</option>
+                                <option value="severe">Severe</option>
+                                <option value="profound">Profound</option>
+                            </select>
+                            <div class="w3-container w3-padding">
+                                <h4>CONFIGURATION</h4>
+                                <div style="display:flex;flex-wrap:wrap;">
+                                    <div style="width:10em">
+                                        <input id="symmetricRL" class="w3-check" type="checkbox">
+                                        <label>Symmetric</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="asymmetricRL" class="w3-check" type="checkbox">
+                                        <label>Asymmetric</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="progressiveRL" class="w3-check" type="checkbox">
+                                        <label>Progressive</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="suddenRL" class="w3-check" type="checkbox">
+                                        <label>Sudden</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="flatRL" class="w3-check" type="checkbox">
+                                        <label>Flat</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="risingRL" class="w3-check" type="checkbox">
+                                        <label>Rising</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="cookieRL" class="w3-check" type="checkbox">
+                                        <label>Cookie Bite</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="precipitousRL" class="w3-check" type="checkbox">
+                                        <label>Precipitous</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="noiseRL" class="w3-check" type="checkbox">
+                                        <label>Noise-Notch</label>
+                                    </div>
+                                    <div style="width:10em">
+                                        <input id="CornerRL" class="w3-check" type="checkbox">
+                                        <label>Corner</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-card-4 w3-white">
+                <header class="w3-container w3-section w3-gray">
+                    <h1>OTOSCOPY</h1>
+                </header>
+                <select class="w3-select" name="otoTest">
+                        <option value="" disabled selected>Type</option>
+                        <option value="normal">Normal</option>
+                        <option value="notNormal">Not Normal</option>
+                    </select>
+            </div>
+            <div class="w3-card-4 w3-white">
+                    <header class="w3-container w3-section w3-gray">
+                        <h1>TYMPANOMETRY</h1>
+                    </header>
+                    <select class="w3-select" name="tympTest">
+                            <option value="" disabled selected>Type</option>
+                            <option value="chlb">Conductive Hearing Loss, Bilateral</option>
+                            <option value="chlur">Conductive Hearing Loss, Unilateral Right</option>
+                            <option value="chlul">Conductive Hearing Loss, Unilateral Left</option>
+                        </select>
+                </div>
+        </div>
+    </div>
+
+    <!--PATIENT TAB-->
+    <div id="patient" class="w3-rest w3-container tabs" style="display:none">
+        <div class="w3-padding-64 w3-center">
+            <h1 class="w3-white">Patient Search</h1>
+            <div class="w3-bar w3-white">
+                <input class="w3-bar-item w3-input" placeholder="Patient ID">
+                <div class="w3-bar-item w3-button w3-border-left"><i class="fas fa-search"></i></div>
+            </div>
+            <table class="w3-table-all">
+                <thead>
+                    <tr class="w3-blue">
+                        <th>Patient ID</th>
+                        <th>Trouble sleeping</th>
+                        <th>Trouble focusing</th>
+                        <th>Pizzas eaten</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>7893</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>1,000,001</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    </div>
+
+    <script>
+        function changeTab(tabName, navName) {
+            var i, tabs = document.getElementsByClassName("tabs"),
+                navs = document.getElementsByClassName("navs"),
+                nav = document.getElementById(navName);
+
+            for (i = 0; i < tabs.length; i += 1) {
+                tabs[i].style.display = "none";
+            }
+            document.getElementById(tabName).style.display = "block";
+
+            for (i = 0; i < navs.length; i += 1) {
+                navs[i].classList.replace('w3-blue', 'w3-black');
+                navs[i].classList.replace('w3-hover-red', 'w3-hover-blue-grey');
+            }
+            nav.classList.replace('w3-black', 'w3-blue');
+            nav.classList.replace('w3-hover-blue-grey', 'w3-hover-red');
+        }
+    </script>
+
+    <script>
+        function checkForData() {
+            var ths_tolerance = ["not a problem.", "a small problem.", "a moderate problem.", "a big problem.", "a very big problem."];
+            var dataValid = sessionStorage.getItem("QuestComp"),
+                Atot, Btot, strTmp, Cnum;
+            if (!dataValid) {
+                return;
+            }
+
+            document.getElementById("tinnitusScreener").innerHTML = sessionStorage.getItem("TS");
+
+            Atot = sessionStorage.getItem("Atot");
+            document.getElementById("THSA").innerHTML = "Section A: " + Atot;
+            Btot = sessionStorage.getItem("Btot");
+            document.getElementById("THSB").innerHTML = "Section B: " + Btot;
+            if (Btot < Atot) {
+                strTmp = "This indicates more of a tinnitus problem.";
+            }
+            else if (Atot < Btot) {
+                strTmp = "This indicates more of a hearing problem.";
+            }
+            else {
+                strTmp = "This indicates both tinnitus and hearing problem.";
+            }
+            if (Atot == 0) {
+                strTmp = "This indicates a hearing problem.";
+            }
+            if (Btot == 0) {
+                strTmp = "This indicates a tinnitus problem.";
+            }
+            if (Atot == 0 && Btot == 0) {
+                strTmp = "This indicates no hearing or tinnitus problems.";
+            }
+            document.getElementById("indicates").innerHTML = strTmp;
+
+            Cnum = sessionStorage.getItem("Cnum");
+            strTmp = "Over the last week, sounds being too loud or uncomfortable were " + ths_tolerance[Cnum];
+            if (Cnum != 0) {
+                strTmp += "<p>Examples: " + sessionStorage.getItem("Cex") + "</p>";
+            }
+            document.getElementById("THSC").innerHTML = strTmp;
+
+            document.getElementById("Overall").innerHTML = "Overall TFI score: " + sessionStorage.getItem("TFI_tot");
+            document.getElementById("I").innerHTML = "I (INTRUSIVE): " + sessionStorage.getItem("TFI_I");
+            document.getElementById("Sc").innerHTML = "Sc (SENSE OF CONTROL): " + sessionStorage.getItem("TFI_Sc");
+            document.getElementById("C").innerHTML = "C (COGNITIVE): " + sessionStorage.getItem("TFI_C");
+            document.getElementById("Sl").innerHTML = "Sl (SLEEP): " + sessionStorage.getItem("TFI_Sl");
+            document.getElementById("A").innerHTML = "A (AUDITORY): " + sessionStorage.getItem("TFI_A");
+            document.getElementById("R").innerHTML = "R (RELAXATION): " + sessionStorage.getItem("TFI_R");
+            document.getElementById("Q").innerHTML = "Q (QUALITY OF LIFE): " + sessionStorage("TFI_Q");
+            document.getElementById("E").innerHTML = "E (EMOTIONAL): " + sessionStorage.getItem("TFI_E");
+        }
+    </script>
+
+    <script>
+        // TODO update summary when tests are updated.
+    </script>
+
+</body>
+
+</html>

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 <body class="w3-content" style="max-width:1300px;background:url('imgs/background.png') no-repeat center center fixed;background-size: cover;">
 
@@ -104,38 +105,26 @@
   
 </div>
 
-
-
-<!-- Footer -->
-<footer class="w3-container w3-black w3-padding-16">
-  <p>Footer</p>
-</footer>
-
 <script>
-/*jslint browser:true */
-function changeTab(name, nav) {
-    'use strict';
-    var i, x = document.getElementsByClassName("tabs"),
-        ns = document.getElementsByClassName("navs"),
-        n = document.getElementById(nav);
-
-    for (i = 0; i < x.length; i += 1) {
-        x[i].style.display = "none";
-    }
-    document.getElementById(name).style.display = "block";
-
-    for (i = 0; i < ns.length; i += 1) {
-        ns[i].classList.remove('w3-blue');
-        ns[i].classList.remove('w3-hover-red');
-        ns[i].classList.add('w3-black');
-        ns[i].classList.add('w3-hover-blue-grey');
-    }
-    n.classList.remove('w3-black');
-    n.classList.remove('w3-hover-blue-grey');
-    n.classList.add('w3-blue');
-    n.classList.add('w3-hover-red');
-}
-</script>
+        /*jslint browser:true */
+        function changeTab(name, nav) {
+            var i, tabs = document.getElementsByClassName("tabs"),
+                navs = document.getElementsByClassName("navs"),
+                nav = document.getElementById(nav);
+        
+            for (i = 0; i < tabs.length; i += 1) {
+                tabs[i].style.display = "none";
+            }
+            document.getElementById(name).style.display = "block";
+        
+            for (i = 0; i < navs.length; i += 1) {
+            nav.classList.replace('w3-blue', 'w3-black');
+            nav.classList.replace('w3-hover-red', 'w3-hover-blue-grey');
+            }
+            nav.classList.replace('w3-black', 'w3-blue');
+            nav.classList.replace('w3-hover-blue-grey', 'w3-hover-red');
+        }
+        </script>
 
 </body>
 </html>
