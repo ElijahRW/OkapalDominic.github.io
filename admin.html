@@ -52,13 +52,17 @@
             <div class="w3-center">
                 <h1 class="w3-white">Database Search</h1>
                 <div class="w3-bar w3-white">
-                    <select class="w3-bar-item w3-select" name="attr">
+                    <select class="w3-bar-item w3-select" id="searchCat" onchange="updateSub()">
                         <option value="" disabled selected>Choose an attribute</option>
-                        <option value="1">Trouble sleeping</option>
-                        <option value="2">Trouble focusing</option>
-                        <option value="3">Number of pizzas eaten</option>
+                        <option value="TSType">Tinnitus Screener Type</option>
+                        <option value="TFIOS">Tinnitus Functional Index Overall Score</option>
+                        <option value="AudType">Audiogram Type</option>
+                        <option value="OtoType">Otoscopy Type</option>
+                        <option value="TympType">Tympanometry Type</option>
                     </select>
-                    <input class="w3-bar-item w3-input w3-border-left" placeholder="Value">
+                    <select class="w3-bar-item w3-select" id="searchSub">
+                        <option value="" disabled selected>Choose a type</option>
+                    </select>
                     <div class="w3-bar-item w3-button w3-border-left"><i class="fas fa-search"></i></div>
                 </div>
                 <table class="w3-table-all">
@@ -138,6 +142,87 @@
             }
             nav.classList.replace('w3-black', 'w3-blue');
             nav.classList.replace('w3-hover-blue-grey', 'w3-hover-red');
+        }
+    </script>
+
+    <script>
+        function updateSub() {
+            var mainCat = document.getElementById("searchCat");
+            
+            switch (mainCat.options[mainCat.selectedIndex].value) {
+                case "TSType":
+                    tsType();
+                    break;
+                case "TFIOS":
+                    tfiOS();
+                    break;
+                case "AudType":
+                    audtypes();
+                    break;
+                case "OtoType":
+                    ototypes();
+                    break;
+                case "TympType":
+                    tymptypes();
+                    break;
+                default:
+                    clearSubs();
+            }
+        }
+
+        function clearSubs() {
+            var searchSub = document.getElementById("searchSub").innerHTML = "<option value='' disabled selected>Choose a type</option>";
+        }
+
+        function tsType() {
+            clearSubs();
+            var searchSub = document.getElementById("searchSub");
+            var items = ["Absent", "Acute Constant", "Acute Temporary", "Acute Intermittent", "Acute Occasional",
+                "Chronic Constant", "Chronic Temporary", "Chronic Intermittent", "Chronic Occasional"];
+
+            for (let i = 0; i < items.length; i += 1) {
+                searchSub.innerHTML += "<option>" + items[i] + "</option>";
+            }
+        }
+
+        function tfiOS() {
+            clearSubs();
+            var searchSub = document.getElementById("searchSub");
+            var items = ["0-10", "11-20", "21-30", "31-40", "41-50", "51-60", "61-70", "71-80", "81-90", "91-100"];
+
+            for (let i = 0; i < items.length; i += 1) {
+                searchSub.innerHTML += "<option>" + items[i] + "</option>";
+            }
+        }
+
+        function audtypes() {
+            clearSubs();
+            var searchSub = document.getElementById("searchSub");
+            var items = ["Conductive", "Sensorineural", "Mixed"];
+
+            for (let i = 0; i < items.length; i += 1) {
+                searchSub.innerHTML += "<option>" + items[i] + "</option>";
+            }
+        }
+
+        function ototypes() {
+            clearSubs();
+            var searchSub = document.getElementById("searchSub");
+            var items = ["Normal", "Not Normal"];
+
+            for (let i = 0; i < items.length; i += 1) {
+                searchSub.innerHTML += "<option>" + items[i] + "</option>";
+            }
+        }
+
+        function tymptypes() {
+            clearSubs();
+            var searchSub = document.getElementById("searchSub");
+            var items = ["Conductive Hearing Loss, Bilateral", "Conductive Hearing Loss, Unilateral Right", "Conductive Hearing Loss, Unilateral Left"];
+
+            for (let i = 0; i < items.length; i += 1) {
+                searchSub.innerHTML += "<option>" + items[i] + "</option>";
+            }
         }
     </script>
 

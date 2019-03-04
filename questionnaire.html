@@ -49,29 +49,29 @@
             }
 
             tmp = calc_tfi_sub();
-            sessionStorage.setItem("TFI_I", tmp[1]);
-            TFI_tot = tmp[0];
+            sessionStorage.setItem("TFI_I", tmp[0]);
+            TFI_tot = tmp[1];
             tmp = calc_tfi_sub();
-            sessionStorage.setItem("TFI_Sc", tmp[1]);
-            TFI_tot += tmp[0];
+            sessionStorage.setItem("TFI_Sc", tmp[0]);
+            TFI_tot += tmp[1];
             tmp = calc_tfi_sub();
-            sessionStorage.setItem("TFI_C", tmp[1]);
-            TFI_tot += tmp[0];
+            sessionStorage.setItem("TFI_C", tmp[0]);
+            TFI_tot += tmp[1];
             tmp = calc_tfi_sub();
-            sessionStorage.setItem("TFI_Sl", tmp[1]);
-            TFI_tot += tmp[0];
+            sessionStorage.setItem("TFI_Sl", tmp[0]);
+            TFI_tot += tmp[1];
             tmp = calc_tfi_sub();
-            sessionStorage.setItem("TFI_A", tmp[1]);
-            TFI_tot += tmp[0];
+            sessionStorage.setItem("TFI_A", tmp[0]);
+            TFI_tot += tmp[1];
             tmp = calc_tfi_sub();
-            sessionStorage.setItem("TFI_R", tmp[1]);
-            TFI_tot += tmp[0];
+            sessionStorage.setItem("TFI_R", tmp[0]);
+            TFI_tot += tmp[1];
             tmp = calc_tfi_sub();
-            sessionStorage.setItem("TFI_Q", tmp[1]);
-            TFI_tot += tmp[0];
+            sessionStorage.setItem("TFI_Q", tmp[0]);
+            TFI_tot += tmp[1];
             tmp = calc_tfi_sub();
-            sessionStorage.setItem("TFI_E", tmp[1]);
-            TFI_tot += tmp[0];
+            sessionStorage.setItem("TFI_E", tmp[0]);
+            TFI_tot += tmp[1];
             TFI_tot = (TFI_tot / 25) * 10;
             sessionStorage.setItem("TFI_tot", TFI_tot);
         }
