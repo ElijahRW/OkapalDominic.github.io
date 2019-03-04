@@ -27,15 +27,14 @@
     <div class="w3-row">
         <div class="w3-quarter w3-container w3-center">
             <div>
-                <a href="#summary" id="summaryNav" class="w3-button w3-blue w3-block w3-hover-red w3-padding-16 navs"
-                    onclick="changeTab('summary', 'summaryNav')">Summary</a>
-                <a href="#tests" id="testsNav" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16 navs"
-                    onclick="changeTab('tests', 'testsNav')">Tests</a>
-                <a href="#notes" id="notesNav" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16 navs"
-                    onclick="changeTab('notes', 'notesNav')">Notes</a>
-                <a href="#patient" id="patientNav"
-                    class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16 navs"
-                    onclick="changeTab('patient', 'patientNav')">Patient Search</a>
+                <div id="summaryNav" class="w3-button w3-blue w3-block w3-hover-red w3-padding-16 navs"
+                    onclick="changeTab('summary', 'summaryNav')">Summary</div>
+                <div id="testsNav" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16 navs"
+                    onclick="changeTab('tests', 'testsNav')">Tests</div>
+                <div id="notesNav" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16 navs"
+                    onclick="changeTab('notes', 'notesNav')">Notes</div>
+                <div id="patientNav" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16 navs"
+                    onclick="changeTab('patient', 'patientNav')">Patient Search</div>
             </div>
         </div>
 
@@ -438,7 +437,9 @@
                         <td>3</td>
                         <td>1</td>
                         <td>1,000,001</td>
-                        <td><div class="w3-button w3-green w3-round-large">Load Patient</div></td>
+                        <td>
+                            <div class="w3-button w3-green w3-round-large">Load Patient</div>
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -446,15 +447,16 @@
 
         <!--NOTES TAB-->
         <div id="notes" class="w3-rest tabs" style="display:none">
-                <div class="w3-card-4">
-                    <header class="w3-container w3-center w3-blue">
-                        <h1>Appointment Notes</h1>
-                    </header>
-    
-                    <textarea id="theNotes" class="w3-text" style="width:100%;height:20em;" placeholder="Appointment Notes"></textarea>
-                    <div class="w3-button w3-green w3-round-large">Update Notes</div>
-                </div>
+            <div class="w3-card-4">
+                <header class="w3-container w3-center w3-blue">
+                    <h1>Appointment Notes</h1>
+                </header>
+
+                <textarea id="theNotes" class="w3-text" style="width:100%;height:20em;"
+                    placeholder="Appointment Notes"></textarea>
+                <div class="w3-button w3-green w3-round-large">Update Notes</div>
             </div>
+        </div>
 
     </div>
 
@@ -534,10 +536,10 @@
             document.getElementById("Q").innerHTML = sessionStorage.getItem("TFI_Q");
             document.getElementById("E").innerHTML = sessionStorage.getItem("TFI_E");
 
-            if(!sessionStorage.getItem("testsDone")) {
+            if (!sessionStorage.getItem("testsDone")) {
                 return;
             }
-            
+
 
             document.getElementById("audType").innerHTML = sessionStorage.getItem("audType");
 
