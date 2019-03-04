@@ -51,30 +51,30 @@
 
                     <div class="w3-container w3-cell w3-half">
                         <h2>Tinnitus Screener</h2>
-                        <p id="tinnitusScreener"></p>
+                        <p>Type: <span id="tinnitusScreener"></span></p>
 
                         <h2>Tinnitus and Hearing Survey</h2>
-                        <p id="THSA"></p>
-                        <p id="THSB"></p>
-                        <p id="indicates"></p>
-                        <p id="THSC"></p>
+                        <p>Section A: <span id="THSA"></span></p>
+                        <p>Section B: <span id="THSB"></span></p>
+                        <p>This indicates <span id="indicates"></span></p>
+                        <p>Over the last week, sounds being too loud or uncomfortable were <span id="THSC"></span></p>
                     </div>
 
                     <div class="w3-container w3-cell w3-half">
                         <h2>Tinnitus Functional Index</h2>
-                        <p id="Overall"></p>
-                        <p id="I"></p>
-                        <p id="Sc"></p>
-                        <p id="C"></p>
-                        <p id="Sl"></p>
-                        <p id="A"></p>
-                        <p id="R"></p>
-                        <p id="Q"></p>
-                        <p id="E"></p>
+                        <p>Overall TFI score: <span id="Overall"></span></p>
+                        <p>I (INTRUSIVE): <span id="I"></span></p>
+                        <p>Sc (SENSE OF CONTROL): <span id="Sc"></span></p>
+                        <p>C (COGNITIVE): <span id="C"></span></p>
+                        <p>Sl (SLEEP): <span id="Sl"></span></p>
+                        <p>A (AUDITORY): <span id="A"></span></p>
+                        <p>R (RELAXATION): <span id="R"></span></p>
+                        <p>Q (QUALITY OF LIFE): <span id="Q"></span></p>
+                        <p>E (EMOTIONAL): <span id="E"></span></p>
                     </div>
                 </div>
 
-                <header class="w3-container w3-center w3-cyan">
+                <header class="w3-container w3-center w3-blue">
                     <h2>Test Results</h2>
                 </header>
 
@@ -130,7 +130,7 @@
                 </header>
 
                 <div class="w3-container w3-stretch">
-                    <select class="w3-bar-item w3-select w3-metro-green" id="audTest">
+                    <select class="w3-bar-item w3-select w3-pale-green" id="audTest">
                         <option value="" disabled selected>Select A Type</option>
                         <option value="conductive">Conductive</option>
                         <option value="sensorineural">Sensorineural</option>
@@ -144,7 +144,7 @@
                             <header class="w3-container w3-blue">
                                 <h3>High Frequency</h3>
                             </header>
-                            <select class="w3-select w3-metro-green" id="lehfst">
+                            <select class="w3-select w3-pale-green" id="lehfst">
                                 <option value="" disabled selected>Severity</option>
                                 <option value="normal">Normal</option>
                                 <option value="moderate">Moderate</option>
@@ -202,7 +202,7 @@
                             <header class="w3-container w3-blue">
                                 <h3>Low Frequency</h3>
                             </header>
-                            <select class="w3-select w3-metro-green" id="lelfst">
+                            <select class="w3-select w3-pale-green" id="lelfst">
                                 <option value="" disabled selected>Severity</option>
                                 <option value="normal">Normal</option>
                                 <option value="moderate">Moderate</option>
@@ -265,7 +265,7 @@
                             <header class="w3-container w3-red">
                                 <h3>High Frequency</h3>
                             </header>
-                            <select class="w3-select w3-metro-green" id="rehfst">
+                            <select class="w3-select w3-pale-green" id="rehfst">
                                 <option value="" disabled selected>Severity</option>
                                 <option value="normal">Normal</option>
                                 <option value="moderate">Moderate</option>
@@ -323,7 +323,7 @@
                             <header class="w3-container w3-red">
                                 <h3>Low Frequency</h3>
                             </header>
-                            <select class="w3-select w3-metro-green" id="relfst">
+                            <select class="w3-select w3-pale-green" id="relfst">
                                 <option value="" disabled selected>Severity</option>
                                 <option value="normal">Normal</option>
                                 <option value="moderate">Moderate</option>
@@ -384,7 +384,7 @@
                 <header class="w3-container w3-section w3-gray">
                     <h1>OTOSCOPY</h1>
                 </header>
-                <select class="w3-select w3-metro-green" id="otoTest">
+                <select class="w3-select w3-pale-green" id="otoTest">
                     <option value="" disabled selected>Type</option>
                     <option value="normal">Normal</option>
                     <option value="notNormal">Not Normal</option>
@@ -394,7 +394,7 @@
                 <header class="w3-container w3-section w3-gray">
                     <h1>TYMPANOMETRY</h1>
                 </header>
-                <select class="w3-select w3-metro-green" id="tympTest">
+                <select class="w3-select w3-pale-green" id="tympTest">
                     <option value="" disabled selected>Type</option>
                     <option value="chlb">Conductive Hearing Loss, Bilateral</option>
                     <option value="chlur">Conductive Hearing Loss, Unilateral Right</option>
@@ -414,8 +414,12 @@
                 </header>
 
                 <div class="w3-row w3-white">
-                    <input class="w3-input w3-threequarter" placeholder="Patient ID">
-                    <div class="w3-button w3-border-left w3-quarter"><i class="fas fa-search"></i></div>
+                    <form onsubmit="patientLookup()">
+                        <input id="lookupID" class="w3-input w3-threequarter" placeholder="Patient ID">
+                        <button class="w3-button w3-border-left w3-quarter" type="submit">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </form>
                 </div>
                 <table class="w3-table-all">
                     <thead>
@@ -424,6 +428,7 @@
                             <th>Trouble sleeping</th>
                             <th>Trouble focusing</th>
                             <th>Pizzas eaten</th>
+                            <th>Load</th>
                         </tr>
                     </thead>
                     <tr>
@@ -431,6 +436,7 @@
                         <td>3</td>
                         <td>1</td>
                         <td>1,000,001</td>
+                        <td><div class="w3-button w3-green w3-round-large">Load Patient</div></td>
                     </tr>
                 </table>
             </div>
@@ -474,50 +480,50 @@
             document.getElementById("tinnitusScreener").innerHTML = sessionStorage.getItem("TS");
 
             Atot = sessionStorage.getItem("Atot");
-            document.getElementById("THSA").innerHTML = "Section A: " + Atot;
+            document.getElementById("THSA").innerHTML = Atot;
             Btot = sessionStorage.getItem("Btot");
-            document.getElementById("THSB").innerHTML = "Section B: " + Btot;
+            document.getElementById("THSB").innerHTML = Btot;
             if (Btot < Atot) {
-                strTmp = "This indicates more of a tinnitus problem.";
+                strTmp = "more of a tinnitus problem.";
             }
             else if (Atot < Btot) {
-                strTmp = "This indicates more of a hearing problem.";
+                strTmp = "more of a hearing problem.";
             }
             else {
-                strTmp = "This indicates both tinnitus and hearing problem.";
+                strTmp = "both tinnitus and hearing problem.";
             }
             if (Atot == 0) {
-                strTmp = "This indicates a hearing problem.";
+                strTmp = "a hearing problem.";
             }
             if (Btot == 0) {
-                strTmp = "This indicates a tinnitus problem.";
+                strTmp = "a tinnitus problem.";
             }
             if (Atot == 0 && Btot == 0) {
-                strTmp = "This indicates no hearing or tinnitus problems.";
+                strTmp = "no hearing or tinnitus problems.";
             }
             document.getElementById("indicates").innerHTML = strTmp;
 
             Cnum = sessionStorage.getItem("Cnum");
-            strTmp = "Over the last week, sounds being too loud or uncomfortable were " + ths_tolerance[Cnum];
+            strTmp = ths_tolerance[Cnum];
             if (Cnum != 0) {
                 strTmp += "<p>Examples: " + sessionStorage.getItem("Cex") + "</p>";
             }
             document.getElementById("THSC").innerHTML = strTmp;
 
-            document.getElementById("Overall").innerHTML = "Overall TFI score: " + sessionStorage.getItem("TFI_tot");
-            document.getElementById("I").innerHTML = "I (INTRUSIVE): " + sessionStorage.getItem("TFI_I");
-            document.getElementById("Sc").innerHTML = "Sc (SENSE OF CONTROL): " + sessionStorage.getItem("TFI_Sc");
-            document.getElementById("C").innerHTML = "C (COGNITIVE): " + sessionStorage.getItem("TFI_C");
-            document.getElementById("Sl").innerHTML = "Sl (SLEEP): " + sessionStorage.getItem("TFI_Sl");
-            document.getElementById("A").innerHTML = "A (AUDITORY): " + sessionStorage.getItem("TFI_A");
-            document.getElementById("R").innerHTML = "R (RELAXATION): " + sessionStorage.getItem("TFI_R");
-            document.getElementById("Q").innerHTML = "Q (QUALITY OF LIFE): " + sessionStorage("TFI_Q");
-            document.getElementById("E").innerHTML = "E (EMOTIONAL): " + sessionStorage.getItem("TFI_E");
+            document.getElementById("Overall").innerHTML = sessionStorage.getItem("TFI_tot");
+            document.getElementById("I").innerHTML = sessionStorage.getItem("TFI_I");
+            document.getElementById("Sc").innerHTML = sessionStorage.getItem("TFI_Sc");
+            document.getElementById("C").innerHTML = sessionStorage.getItem("TFI_C");
+            document.getElementById("Sl").innerHTML = sessionStorage.getItem("TFI_Sl");
+            document.getElementById("A").innerHTML = sessionStorage.getItem("TFI_A");
+            document.getElementById("R").innerHTML = sessionStorage.getItem("TFI_R");
+            document.getElementById("Q").innerHTML = sessionStorage.getItem("TFI_Q");
+            document.getElementById("E").innerHTML = sessionStorage.getItem("TFI_E");
 
-            // Check if patient data loaded
-            if (!sessionStorage.getItem("testsDone")) {
+            if(!sessionStorage.getItem("testsDone")) {
                 return;
             }
+            
 
             document.getElementById("audType").innerHTML = sessionStorage.getItem("audType");
 
@@ -615,6 +621,7 @@
 
             sessionStorage.setItem("testsDone", true);
             changeTab('summary', 'summaryNav');
+            checkForData();
         }
     </script>
 
@@ -623,6 +630,14 @@
     <script>
         function savePatient() {
             // Push data to database
+        }
+    </script>
+
+    <!--patientLookup
+    ----Display all patients with entered patient ID-->
+    <script>
+        function patientLookup() {
+            var id = Number(document.getElementById("lookupID"));
         }
     </script>
 
