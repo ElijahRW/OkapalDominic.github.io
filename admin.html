@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <title>Admin</title>
 <meta charset="UTF-8">
@@ -31,7 +31,9 @@
                 <div id="dataNav" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16 navs"
                     onclick="changeTab('data', 'dataNav')">Database Search</div>
                 <div id="patientNav" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16 navs"
-                    onclick="changeTab('patient', 'patientNav')">Patient Search</div>
+                     onclick="changeTab('patient', 'patientNav')">Patient Search</div>
+                <div id="accountsNav" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16 navs"
+                     onclick="changeTab('accounts', 'accountsNav')">Account Admin</div>
             </div>
         </div>
 
@@ -106,18 +108,49 @@
                 </div>
                 <table class="w3-table-all">
                     <thead>
+                    <tr class="w3-blue">
+                        <th>Patient ID</th>
+                        <th>Appointment Date</th>
+                        <th>Audiologist ID</th>
+                        <th>Summary</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>7893</td>
+                        <td>1/5/2019</td>
+                        <td>15</td>
+                        <td><div class="w3-button w3-blue w3-round-large w3-hover-indigo" onclick="window.location='http://localhost:3000/aud-login'">View Summary</div></td>
+                        <td><div class="w3-button w3-blue w3-round-large w3-hover-indigo">Delete</div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div id="accounts" class="w3-rest tabs" style="display:none">
+            <div class="w3-center">
+                <h1 class="w3-white">Accounts Search</h1>
+                <div class="w3-bar w3-white">
+                    <input class="w3-bar-item w3-input" placeholder="Account ID">
+                    <div class="w3-bar-item w3-button w3-border-left"><i class="fas fa-search"></i></div>
+                </div>
+                <div class="w3-button w3-blue w3-round-large w3-hover-indigo">Create New Account</div>
+                <table class="w3-table-all">
+                    <thead>
                         <tr class="w3-blue">
-                            <th>Patient ID</th>
-                            <th>Trouble sleeping</th>
-                            <th>Trouble focusing</th>
-                            <th>Pizzas eaten</th>
+                            <th>Account ID</th>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Type</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tr>
                         <td>7893</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1,000,001</td>
+                        <td>Elijah</td>
+                        <td>amstudios@gmail.com</td>
+                        <td>Audiologist</td>
+                        <td><div class="w3-button w3-blue w3-round-large w3-hover-indigo">Edit</div><div class="w3-button w3-blue w3-round-large w3-hover-indigo">Delete</div></td>
                     </tr>
                 </table>
             </div>
