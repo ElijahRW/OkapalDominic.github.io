@@ -46,7 +46,6 @@
                     <input class="w3-round-large w3-center w3-padding w3-margin-bottom" type="text"
                         placeholder="patientID">
                     <p id="patientIDp" class="w3-margin-bottom w3-round-large w3-center w3-hide"></p>
-                    <div class="w3-button w3-green w3-round-large">Search for Patient</div>
                 </header>
 
                 <div class="w3-cell-row w3-left-align">
@@ -409,42 +408,33 @@
         </div>
 
         <!--PATIENT TAB-->
-        <div id="patient" class="w3-rest tabs" style="display:none">
-            <div class="w3-card-4">
-                <header class="w3-container w3-center w3-blue">
-                    <h1>Patient Search</h1>
-                </header>
-
-                <div class="w3-row w3-white">
-                    <form onsubmit="patientLookup()">
-                        <input id="lookupID" class="w3-input w3-threequarter" placeholder="Patient ID">
-                        <button class="w3-button w3-border-left w3-quarter" type="submit">
-                            <i class="fas fa-search"></i> Search
-                        </button>
-                    </form>
-                </div>
-                <table class="w3-table-all">
-                    <thead>
-                        <tr class="w3-blue">
-                            <th>Patient ID</th>
-                            <th>Trouble sleeping</th>
-                            <th>Trouble focusing</th>
-                            <th>Pizzas eaten</th>
-                            <th>Load</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td>7893</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1,000,001</td>
-                        <td>
-                            <div class="w3-button w3-green w3-round-large">Load Patient</div>
-                        </td>
-                    </tr>
-                </table>
+    <div id="patient" class="w3-rest tabs" style="display:none">
+        <div class="w3-center">
+            <h1 class="w3-white">Patient Search</h1>
+            <div class="w3-bar w3-white">
+                <input class="w3-bar-item w3-input" placeholder="Patient ID">
+                <div class="w3-bar-item w3-button w3-border-left"><i class="fas fa-search"></i></div>
             </div>
+            <table class="w3-table-all">
+                <thead>
+                <tr class="w3-blue">
+                    <th>Patient ID</th>
+                    <th>Appointment Date</th>
+                    <th>Audiologist ID</th>
+                    <th>Summary</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td>7893</td>
+                    <td>1/5/2019</td>
+                    <td>15</td>
+                    <td><div class="w3-button w3-blue w3-round-large w3-hover-indigo" onclick="window.location='http://localhost:3000/aud-login'">View Summary</div></td>
+                    <td><div class="w3-button w3-blue w3-round-large w3-hover-indigo">Delete</div></td>
+                </tr>
+            </table>
         </div>
+    </div>  
 
         <!--NOTES TAB-->
         <div id="notes" class="w3-rest tabs" style="display:none">
